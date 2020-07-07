@@ -28,10 +28,10 @@ app.post("/contact-us", function (req, res) {
 
   mailer.sendMail(
     {
-      from: email,
+      from: `${name} <${email}>`,
       to: [contactAddress],
       subject: "Contact Us - Project",
-      html: `${message} \n - ${name}` || "[No message]",
+      html: message || "[No message]",
     },
     function (err, info) {
       if (err) return res.status(500).send(err);
